@@ -149,6 +149,7 @@ async def activate_user(
                 ActivationTokenModel.id == activation_token.id
             )
         )
+        await db.add(user)
         await db.commit()
 
         return MessageResponseSchema(
