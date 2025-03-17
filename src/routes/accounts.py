@@ -273,7 +273,7 @@ async def password_reset_complete(
                 detail="Invalid email or token."
             )
 
-        UserModel.set_password(request_data.password)
+        user.set_password(request_data.password)
         await db.execute(
             delete(PasswordResetTokenModel).where(
                 PasswordResetTokenModel.id == reset_token.id
